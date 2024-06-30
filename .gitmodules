@@ -1,0 +1,3 @@
+[submodule "warp-token/lib/forge-std"]
+	path = warp-token/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
