@@ -1,0 +1,79 @@
+{
+  "chains": {
+    "anvil8545": {
+      "name": "anvil8545",
+      "chainId": 31337,
+      "domainId": 31337,
+      "protocol": "ethereum",
+      "rpcUrls": [
+        {
+          "http": "http://localhost:8545"
+        }
+      ],
+      "blocks": {
+        "confirmations": 1,
+        "reorgPeriod": 1,
+        "estimateBlockTime": 6
+      },
+      "transactionOverrides": {
+        "maxFeePerGas": 1000000000,
+        "maxPriorityFeePerGas": 1000000000
+      },
+      "staticMerkleRootMultisigIsmFactory": "0xbCBd6545ae14616c7303fAc90AbdEF99A67D227A",
+      "staticMessageIdMultisigIsmFactory": "0x0cd187023ac667a655178463A450F489C3844926",
+      "staticAggregationIsmFactory": "0x80647c701Be054f0f0aD7D522917183647bfe5f1",
+      "staticAggregationHookFactory": "0xa1e88a0B187916565D3a912569601455977b3781",
+      "domainRoutingIsmFactory": "0xe6047E24F2f4EcC2A5be099ddBEE1246b97D4743",
+      "interchainSecurityModule": "0x3B9563dC82de01F7F89750B044393F49c557daBD",
+      "domainRoutingIsm": "0x3B9563dC82de01F7F89750B044393F49c557daBD",
+      "merkleTreeHook": "0x26d6F5bFEef260B702cFbD80E3255F8cc1ff849E",
+      "protocolFee": "0xb397B8c93E42BF84237b0E9772014E661FBA5559",
+      "testRecipient": "0x7873EAB34FBbb4efEBB34d53F0B24D33684F9D94",
+      "mailbox": "0x08F49137cF9fBcB702EF21661c268a1083Cc7058",
+      "proxyAdmin": "0x259795c35ec2C4eb293E6d9e2aa04441f7Dcc613",
+      "validatorAnnounce": "0xE613Fa04ddadB791fD5320aB8D20B4f1635f85cA",
+      "interchainGasPaymaster": "0x0000000000000000000000000000000000000000",
+      "index": {
+        "from": 68
+      }
+    },
+    "anvil8546": {
+      "name": "anvil8546",
+      "chainId": 31338,
+      "domainId": 31338,
+      "protocol": "ethereum",
+      "rpcUrls": [
+        {
+          "http": "http://localhost:8546"
+        }
+      ],
+      "blocks": {
+        "confirmations": 1,
+        "reorgPeriod": 1,
+        "estimateBlockTime": 6
+      },
+      "transactionOverrides": {
+        "maxFeePerGas": 1000000000,
+        "maxPriorityFeePerGas": 1000000000
+      },
+      "staticMerkleRootMultisigIsmFactory": "0xbCBd6545ae14616c7303fAc90AbdEF99A67D227A",
+      "staticMessageIdMultisigIsmFactory": "0x0cd187023ac667a655178463A450F489C3844926",
+      "staticAggregationIsmFactory": "0x80647c701Be054f0f0aD7D522917183647bfe5f1",
+      "staticAggregationHookFactory": "0xa1e88a0B187916565D3a912569601455977b3781",
+      "domainRoutingIsmFactory": "0xe6047E24F2f4EcC2A5be099ddBEE1246b97D4743",
+      "interchainSecurityModule": "0x3B9563dC82de01F7F89750B044393F49c557daBD",
+      "domainRoutingIsm": "0x3B9563dC82de01F7F89750B044393F49c557daBD",
+      "merkleTreeHook": "0x26d6F5bFEef260B702cFbD80E3255F8cc1ff849E",
+      "protocolFee": "0xb397B8c93E42BF84237b0E9772014E661FBA5559",
+      "testRecipient": "0x7873EAB34FBbb4efEBB34d53F0B24D33684F9D94",
+      "mailbox": "0x08F49137cF9fBcB702EF21661c268a1083Cc7058",
+      "proxyAdmin": "0x259795c35ec2C4eb293E6d9e2aa04441f7Dcc613",
+      "validatorAnnounce": "0xE613Fa04ddadB791fD5320aB8D20B4f1635f85cA",
+      "interchainGasPaymaster": "0x0000000000000000000000000000000000000000",
+      "index": {
+        "from": 116
+      }
+    }
+  },
+  "defaultRpcConsensusType": "fallback"
+}

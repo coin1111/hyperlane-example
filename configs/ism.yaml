@@ -1,0 +1,9 @@
+anvil8545:
+  threshold: 1
+  validators:
+    - "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+anvil8546:
+  threshold: 1
+  validators:
+    - "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+

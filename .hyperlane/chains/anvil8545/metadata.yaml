@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=../schema.json
+name: anvil8545
+chainId: 31337
+domainId: 31337
+protocol: ethereum
+rpcUrls:
+  - http: http://localhost:8545
+blocks:
+  confirmations: 1
+  reorgPeriod: 1
+  estimateBlockTime: 6
+transactionOverrides:
+  maxFeePerGas: 1000000000
+  maxPriorityFeePerGas: 1000000000
