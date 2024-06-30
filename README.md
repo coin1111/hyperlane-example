@@ -185,6 +185,21 @@ Message was delivered!
 
 use crtl-c to stop anvil instances
 
+## Debugging ethereum contracts
+
+To debug ethereum contracts install hardhat:
+```
+npm i --save-dev hardhat
+npx hardhat init 
+npm i --save-dev @nomicfoundation/hardhat-foundry
+```
+
+```
+# run script
+npx hardhat run eth-scripts/valAnnounce.ts
+```
+
+
 
 
 
