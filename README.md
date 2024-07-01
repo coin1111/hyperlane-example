@@ -258,7 +258,7 @@ anvil8546:
 4. Deploy warp route contracts
 
 ```
-hyperlane deploy warp
+./deploy-warp.sh
 ```
 
 this will produce a new config file in ```~/.hyperlane/deployments/warp_routes/LTK/anvil8545-anvil8546-config.yaml```
@@ -267,7 +267,7 @@ this config file is required to send tokens over warp route
 5. Send tokens via warp route
 
 ```
-hyperlane send transfer -w ~/.hyperlane/deployments/warp_routes/LTK/anvil8545-anvil8546-config.yaml --origin  anvil8545 --destination anvil8546
+./warp-transfer.sh 0
 ```
 
 output:
