@@ -267,7 +267,9 @@ this config file is required to send tokens over warp route
 5. Send tokens via warp route
 
 ```
-./warp-transfer.sh 0
+./warp-transfer.sh 0 #8545->8546
+./warp-transfer.sh 1 #8546->8545
+
 ```
 
 output:
@@ -291,6 +293,16 @@ Message 0xde74b0f1480c5a8715707e614e16fe3112040e84615ec993585f60b437593533 was p
 All messages processed for tx 0xc3ddf61f4d19e5d1a185586a35ebd3dfee5242bff8e72e95aa9dd26a0127ccf0                     
 Transfer sent to destination chain!
 ```
+
+6. Check balances 
+```
+# after 5 transfers 8545->8546
+npx hardhat run eth-scripts/getBalance.ts
+Balance on 8545: 999999999999999999999995
+Balance on 8546: 5
+```
+
+
 
 
 
