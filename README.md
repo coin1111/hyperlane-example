@@ -39,6 +39,11 @@ blocks:
 transactionOverrides:
   maxFeePerGas: 1000000000
   maxPriorityFeePerGas: 1000000000
+  # add this section manually if missing. this is required for warp send to work
+nativeToken:
+  name: ETH
+  symbol: ETH
+  decimals: 18
   ```
 
   create 2nd chain by copying ```$HOME/.hyperlane/chains/anvil8545/metadata.yaml``` i n to ```$HOME/.hyperlane/chains/anvil8546/metadata.yaml``` and fixing yaml values
@@ -198,6 +203,98 @@ npm i --save-dev @nomicfoundation/hardhat-foundry
 # run script
 npx hardhat run eth-scripts/valAnnounce.ts
 ```
+
+
+## Create ERC20 token for Warp route
+
+1. create forge project
+```
+forge init --force warp-token
+cd warp-token
+forge install openzeppelin/openzeppelin-contracts
+
+```
+
+2. Deploy token
+```
+cd ..
+./deploy-erc20.sh 0
+./deploy-erc20.sh 1
+Deployer: 0xd0A8b649C848917C035d7aF0267c1bBE964B9f88                                     
+Deployed to: 0xA9456C391C1930Fc50af92C7C44b45CF6066C1B4                                  
+Transaction hash: 0x25ad41e15928c63a55b914054e5233c92b255df5023ae9b926930a7fd4c91d7e     
+
+```
+
+run tests
+```
+forge test
+cd ..
+```
+
+3. Create warp config
+
+```
+hyperlane config create warp
+```
+Resulting file:
+```
+anvil8545:
+  isNft: false
+  type: collateral
+  token: "0xA9456C391C1930Fc50af92C7C44b45CF6066C1B4"
+  owner: "0xd0A8b649C848917C035d7aF0267c1bBE964B9f88"
+  mailbox: "0x08F49137cF9fBcB702EF21661c268a1083Cc7058"
+anvil8546:
+  isNft: false
+  type: collateral
+  token: "0xA9456C391C1930Fc50af92C7C44b45CF6066C1B4"
+  owner: "0xd0A8b649C848917C035d7aF0267c1bBE964B9f88"
+  mailbox: "0x08F49137cF9fBcB702EF21661c268a1083Cc7058"
+  ```
+
+  make sure that token contract returned by ```./deploy-token.sh``` matches token in warp config file in ```configs/warp-route-deployment.yaml```.
+
+4. Deploy warp route contracts
+
+```
+hyperlane deploy warp
+```
+
+this will produce a new config file in ```~/.hyperlane/deployments/warp_routes/LTK/anvil8545-anvil8546-config.yaml```
+this config file is required to send tokens over warp route
+
+5. Send tokens via warp route
+
+```
+hyperlane send transfer -w ~/.hyperlane/deployments/warp_routes/LTK/anvil8545-anvil8546-config.yaml --origin  anvil8545 --destination anvil8546
+```
+
+output:
+```
+Sending test transfer                                                                                                     
+Selected origin chain: anvil8545, destination chain: anvil8546                                                       
+Running pre-flight checks for chains...                                                                                   
+✅ Chains are valid                                                                                                       
+✅ Signer is valid                                                                                                        
+✅ Balances are sufficient                                                                                                
+Sending 1 wei from anvil8545 to anvil8546                                                                                 
+Approval is required for transfer of LTK                                                                                  
+Approval required for transfer of LTK                                                                                     
+Approval is required for transfer of LTK                                                                                  
+Approval required for transfer of LTK                                                                                     
+Pending 0x63a3cadb4b6674c1ac6a210c66828715f4022cd6261488714ade615deefc8ac6 (waiting 1 blocks for confirmation)           
+Pending 0xc3ddf61f4d19e5d1a185586a35ebd3dfee5242bff8e72e95aa9dd26a0127ccf0 (waiting 1 blocks for confirmation)           
+Sent message from anvil8545 to 0xd0A8b649C848917C035d7aF0267c1bBE964B9f88 on anvil8546.                              
+Message ID: 0xde74b0f1480c5a8715707e614e16fe3112040e84615ec993585f60b437593533                                       
+Message 0xde74b0f1480c5a8715707e614e16fe3112040e84615ec993585f60b437593533 was processed                             
+All messages processed for tx 0xc3ddf61f4d19e5d1a185586a35ebd3dfee5242bff8e72e95aa9dd26a0127ccf0                     
+Transfer sent to destination chain!
+```
+
+
+
+
 
 
 

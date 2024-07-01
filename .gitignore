@@ -3,6 +3,8 @@ val-anvil8545/
 val-anvil8546/
 hyperlane_db_relayer/
 hyperlane_db_relayer2/
+warp-token/lib/openzeppelin-contracts/
+warp-token/.gitmodules
 
 
 node_modules
