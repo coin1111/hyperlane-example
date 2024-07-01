@@ -1,14 +1,14 @@
-# Hyperlane example of sending messages between 2 chains
+# Hyperlane example of sending messages between 2 local chains
 
 ## Architecture
 
-1. We create 2 "blockchains" using Foundry Anvil (equivalent to hardhat): 
+1. We create 2 local "blockchains" using Foundry Anvil (local EVM, equivalent to hardhat): 
 - anvil8545
 - anvil8546
 
-2. Launch 2 validator for each of 2 blockchains. Each validator will sign messages in mailbox on its chain. Validator private keys must be stored security, otherwise messages can be validated by an attacker.
+2. Launch 2 validators for each of 2 blockchains. Each validator will sign messages in a mailbox on its chain. Validator private keys must be stored securely, otherwise messages can be validated by an attacker.
 
-3. Launch 2 releayer each for its chain. Each relayer watches for messages and validator signatures on its chain and send a message to the second chain. Relayer private keys if stolen will not lead to data loss, since relayer only copies a message from one chain mailbox to the other chain.
+3. Launch 2 relayers each for its chain. Each relayer watches for messages and validator signatures on its chain and sends a message to the second chain. Relayer private keys if stolen will not lead to data loss, since relayer only copies a message from one chain mailbox to the other chain.
 
 
 ## Setup
@@ -46,11 +46,11 @@ nativeToken:
   decimals: 18
   ```
 
-  create 2nd chain by copying ```$HOME/.hyperlane/chains/anvil8545/metadata.yaml``` i n to ```$HOME/.hyperlane/chains/anvil8546/metadata.yaml``` and fixing yaml values
+  create 2nd chain by copying ```$HOME/.hyperlane/chains/anvil8545/metadata.yaml``` in to ```$HOME/.hyperlane/chains/anvil8546/metadata.yaml``` and fixing yaml values
 
 ## Install Foundry
 
-Foundry is equivalent of Hardhat, but new. It has anvil which is simulation of EVM.
+Foundry is equivalent of Hardhat, but new. It has anvil which is a local EVM.
 
 ```
 curl -L https://foundry.paradigm.xyz | bash
@@ -95,7 +95,7 @@ anvil8546:
     - "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
 ```
 
-note that validator address is set to public key used for validators for both chains
+note that validator address is set to a public key used for validators for both chains.
 
 ## Set up environment
 
@@ -137,7 +137,7 @@ source set-vars.sh
 ./run-relayer.sh 1
 ```
 
-Check that all containres are running using ```docker ps -a```
+Check that all containcontainersres are running using ```docker ps -a```
 
 ```
 CONTAINER ID   IMAGE                                                            COMMAND                  CREATED         STATUS         PORTS     NAMES
@@ -181,15 +181,6 @@ Message was delivered!
 ```
 
 
-## cleanup
-
-```
-./docker-rm.sh
-./cleanup.sh
-```
-
-use crtl-c to stop anvil instances
-
 ## Debugging ethereum contracts
 
 To debug ethereum contracts install hardhat:
@@ -207,6 +198,8 @@ npx hardhat run eth-scripts/valAnnounce.ts
 
 ## Create ERC20 token for Warp route
 
+This part tests ability to send tokens between 2 chains. We create ERC20 token on anvil8545. Such token is called "collateral" in hyperlane. It has a corresponding "synthetic" token on anvil8546 chain. When we transfer this token from anvil8545 to anvil8546, hyperlane automatically mints a proxy token on anvil8545 and subtracts a token as a collateral on anvil8545. During reverse transfer, a synthetic token gets burned and account on anvil8545 gets a credit back of a collated token.
+
 1. create forge project
 ```
 forge init --force warp-token
@@ -218,8 +211,8 @@ forge install openzeppelin/openzeppelin-contracts
 2. Deploy token
 ```
 cd ..
+# nned to deploy token only on anvil8545
 ./deploy-erc20.sh 0
-./deploy-erc20.sh 1
 Deployer: 0xd0A8b649C848917C035d7aF0267c1bBE964B9f88                                     
 Deployed to: 0xA9456C391C1930Fc50af92C7C44b45CF6066C1B4                                  
 Transaction hash: 0x25ad41e15928c63a55b914054e5233c92b255df5023ae9b926930a7fd4c91d7e     
@@ -302,19 +295,13 @@ Balance on 8545: 999999999999999999999995
 Balance on 8546: 5
 ```
 
+## Cleanup
 
+```
+./docker-rm.sh
+./cleanup.sh
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
+use crtl-c to stop anvil instances
 
 See official [docs] (https://docs.hyperlane.xyz/docs/guides/deploy-hyperlane-local-agents)

@@ -1,6 +1,6 @@
 //query Validatorannounce contract to get the announced validators and their storage locations
 import { ethers } from "ethers";
-import { validatorAnnounceAbi } from "./validatorAnnounceAbi.ts";
+import { validatorAnnounceAbi } from "./validatorAnnounceAbi";
 
 const validatoAnnounceAddress = "0xE613Fa04ddadB791fD5320aB8D20B4f1635f85cA";
 

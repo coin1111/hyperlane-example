@@ -6,7 +6,7 @@ const ltkTokenAddress = "0xA9456C391C1930Fc50af92C7C44b45CF6066C1B4";
 // see ~/.hyperlane/deployments/warp_routes/LTK/anvil8545-anvil8546-config.yaml
 const addressOrDenom = "0xdB611018BB4aeC6Cc513f9962c8977fe4E235160";
 
-async function getBalance(port: number, tokenAddress) {
+async function getBalance(port: number, tokenAddress: string) {
   const ltkAbi = JSON.parse(
     fs.readFileSync("./warp-token/ltkAbi.json", "utf-8")
   );
