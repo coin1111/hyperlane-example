@@ -230,7 +230,7 @@ cd ..
 ```
 hyperlane config create warp
 ```
-Resulting file:
+Resulting file ```configs/warp-route-deployment.yaml```:
 ```
 anvil8545:
   isNft: false
@@ -260,8 +260,8 @@ this config file is required to send tokens over warp route
 5. Send tokens via warp route
 
 ```
-./warp-transfer.sh 0 #8545->8546
-./warp-transfer.sh 1 #8546->8545
+./warp-transfer.sh 0 LTK #8545->8546
+./warp-transfer.sh 1 LTK #8546->8545
 
 ```
 
@@ -293,6 +293,16 @@ Transfer sent to destination chain!
 npx hardhat run eth-scripts/getBalance.ts
 Balance on 8545: 999999999999999999999995
 Balance on 8546: 5
+```
+
+## Transfer native token
+Hyperlane allows transferring a native (ETH) token.
+To enable this scenario, replace "collateral" with "native" in ```configs/warp-route-deployment.yaml``` before deploying warp contracts. For this scenario no need to deploy erc20 token.
+
+To transfer a native token:
+```
+./warp-transfer.sh 0 ETH #8545->8546
+./warp-transfer.sh 1 ETH #8546->8545
 ```
 
 ## Cleanup

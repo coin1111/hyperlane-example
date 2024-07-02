@@ -39,7 +39,7 @@
       "validatorAnnounce": "0xE613Fa04ddadB791fD5320aB8D20B4f1635f85cA",
       "interchainGasPaymaster": "0x0000000000000000000000000000000000000000",
       "index": {
-        "from": 74
+        "from": 70
       }
     },
     "anvil8546": {
@@ -81,7 +81,7 @@
       "validatorAnnounce": "0xE613Fa04ddadB791fD5320aB8D20B4f1635f85cA",
       "interchainGasPaymaster": "0x0000000000000000000000000000000000000000",
       "index": {
-        "from": 125
+        "from": 121
       }
     }
   },
