@@ -211,7 +211,7 @@ forge install openzeppelin/openzeppelin-contracts
 2. Deploy token
 ```
 cd ..
-# nned to deploy token only on anvil8545
+# deploy token only on anvil8545
 ./deploy-erc20.sh 0
 Deployer: 0xd0A8b649C848917C035d7aF0267c1bBE964B9f88                                     
 Deployed to: 0xA9456C391C1930Fc50af92C7C44b45CF6066C1B4                                  

@@ -19,6 +19,11 @@
         "maxFeePerGas": 1000000000,
         "maxPriorityFeePerGas": 1000000000
       },
+      "nativeToken": {
+        "name": "ETH",
+        "symbol": "ETH",
+        "decimals": 18
+      },
       "staticMerkleRootMultisigIsmFactory": "0xbCBd6545ae14616c7303fAc90AbdEF99A67D227A",
       "staticMessageIdMultisigIsmFactory": "0x0cd187023ac667a655178463A450F489C3844926",
       "staticAggregationIsmFactory": "0x80647c701Be054f0f0aD7D522917183647bfe5f1",
@@ -34,7 +39,7 @@
       "validatorAnnounce": "0xE613Fa04ddadB791fD5320aB8D20B4f1635f85cA",
       "interchainGasPaymaster": "0x0000000000000000000000000000000000000000",
       "index": {
-        "from": 103
+        "from": 74
       }
     },
     "anvil8546": {
@@ -56,6 +61,11 @@
         "maxFeePerGas": 1000000000,
         "maxPriorityFeePerGas": 1000000000
       },
+      "nativeToken": {
+        "name": "ETH",
+        "symbol": "ETH",
+        "decimals": 18
+      },
       "staticMerkleRootMultisigIsmFactory": "0xbCBd6545ae14616c7303fAc90AbdEF99A67D227A",
       "staticMessageIdMultisigIsmFactory": "0x0cd187023ac667a655178463A450F489C3844926",
       "staticAggregationIsmFactory": "0x80647c701Be054f0f0aD7D522917183647bfe5f1",
@@ -71,7 +81,7 @@
       "validatorAnnounce": "0xE613Fa04ddadB791fD5320aB8D20B4f1635f85cA",
       "interchainGasPaymaster": "0x0000000000000000000000000000000000000000",
       "index": {
-        "from": 153
+        "from": 125
       }
     }
   },

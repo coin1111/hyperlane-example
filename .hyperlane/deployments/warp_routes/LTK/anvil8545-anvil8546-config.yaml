@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=../schema.json
+tokens:
+  - chainName: anvil8545
+    standard: EvmHypCollateral
+    name: LibraToken
+    symbol: LTK
+    decimals: 18
+    totalSupply: 0
+    isNft: false
+    type: collateral
+    token: "0xA9456C391C1930Fc50af92C7C44b45CF6066C1B4"
+    owner: "0xd0A8b649C848917C035d7aF0267c1bBE964B9f88"
+    mailbox: "0x08F49137cF9fBcB702EF21661c268a1083Cc7058"
+    addressOrDenom: "0xdB611018BB4aeC6Cc513f9962c8977fe4E235160"
+    collateralAddressOrDenom: "0xA9456C391C1930Fc50af92C7C44b45CF6066C1B4"
+    connections:
+      - token: ethereum|anvil8546|0xa72950d871Ddaf35cE16659eeF57a1d66216cdD3
+  - chainName: anvil8546
+    standard: EvmHypSynthetic
+    name: LibraToken
+    symbol: LTK
+    decimals: 18
+    totalSupply: 0
+    isNft: false
+    type: synthetic
+    owner: "0xd0A8b649C848917C035d7aF0267c1bBE964B9f88"
+    mailbox: "0x08F49137cF9fBcB702EF21661c268a1083Cc7058"
+    addressOrDenom: "0xa72950d871Ddaf35cE16659eeF57a1d66216cdD3"
+    connections:
+      - token: ethereum|anvil8545|0xdB611018BB4aeC6Cc513f9962c8977fe4E235160
